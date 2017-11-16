@@ -36,7 +36,7 @@ set ttimeout            " time out for key codes
 set ttimeoutlen=100     " wait up to 100ms after Esc for special key
 
 " Show @@@ in the last line if it is truncated.
-"set display=truncate
+set display=truncate
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -111,12 +111,12 @@ set cursorline
 set spell
 
 " Use true colors
-"set termguicolors
+set termguicolors
 set t_Co=256
 
 " Color scheme
 set background=dark
-colorscheme jellybeans
+colorscheme base16-seti
 
 " Re-define *all* of the xterm function key sequences that vim forgets about
 " when using tmux. Doing this correctly probably requires an inordinately long
