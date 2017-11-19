@@ -30,7 +30,7 @@ set ttimeout            " time out for key codes
 set ttimeoutlen=100     " wait up to 100ms after Esc for special key
 
 " Show @@@ in the last line if it is truncated.
-set display=truncate
+set display=lastline
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -104,14 +104,6 @@ set cursorline
 " Spell checking
 set spell
 
-" Use true colors
-set termguicolors
-set t_Co=256
-
-" Color scheme
-set background=dark
-colorscheme base16-seti
-
 " Re-define *all* of the xterm function key sequences that vim forgets about
 " when using tmux. Doing this correctly probably requires an inordinately long
 " list, and it seems like you can avoid all this if you just pretend to be
@@ -127,16 +119,38 @@ colorscheme base16-seti
 
 " Pretend to be xterm when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
-  " Already set above 
-  "set background=dark
   set title
   if &term =~ '256color'
     set term=xterm-256color
-    set t_Co=256
   else
     set term=xterm
   endif
 endif
+
+if &term =~ '256color'
+  " Use 256 colors
+  set t_Co=256
+  " Use true colors
+  if has("termguicolors")
+    set termguicolors
+  endif
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
+
+" Color scheme
+set background=dark
+"let base16colorspace=256
+try
+  "colorscheme base16-seti
+  colorscheme jellybeans
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  " The default colorscheme resets background to light
+  set background=dark
+endtry
 
 
 
