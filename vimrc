@@ -143,9 +143,16 @@ endif
 " Color scheme
 set background=dark
 try
+  " Looks great, but needs a true-color terminal, or annoying changes to the
+  " default palette. One of these days I might try to make an almost-seti
+  " colorscheme that can work with the default 256-color palette.
   "let base16colorspace=256
   "colorscheme base16-seti
+
+  " Original colors are slightly too warm for my taste.
   "let g:molokai_original=1
+  " Rehash is barely noticeable in true-color terminals, but looks better in
+  " 256 color terminals with a default palette.
   let g:rehash256=1
   colorscheme molokai
 catch /^Vim\%((\a\+)\)\=:E185/
