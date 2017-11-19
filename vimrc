@@ -142,10 +142,12 @@ endif
 
 " Color scheme
 set background=dark
-"let base16colorspace=256
 try
+  "let base16colorspace=256
   "colorscheme base16-seti
-  colorscheme jellybeans
+  "let g:molokai_original=1
+  let g:rehash256=1
+  colorscheme molokai
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   " The default colorscheme resets background to light
