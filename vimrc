@@ -109,6 +109,7 @@ set spell
 " list, and it seems like you can avoid all this if you just pretend to be
 " xterm (see below). The real solution is probably to create a proper terminfo
 " for tmux.
+" See also: terminalkeys, fixkey plugins
 "if &term =~ '^tmux'
 "  " Need to enable xterm-keys in tmux
 "  execute "set <xUp>=\e[1;*A"
