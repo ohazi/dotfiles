@@ -1,0 +1,131 @@
+tmux:
+    ~window, tab navigation
+    +clipboard
+        over ssh?
+        xsel doesn't work on remote systems without X - add fallback?
+    ~detatching / reattaching between sessions
+        +join-window, join-pane, move-window etc.
+            ~bindings (prefix @)
+    ~colors
+        better option for 256 color terminals
+        figure out how to color and style tabs
+    +focus-events (bug with vim?)
+    ?spurious title flashing
+        I don't remember what this was about...
+    +status-interval (make this shorter)
+    +display-time (make this longer)
+    ?vim "background color erase"
+        I think this just works now?
+        This seems to show up in old vim (7.4). `set t_ut=` seems to fix it.
+    +scrolling in man, less (+vim on woodstock (maybe related to $TERM?))
+        .tmux.conf: ridiculous bind-key WheelUpPane/WheelDownPane incantation
+        Here: http://sc0ty.pl/2015/12/reasonable-mouse-support-in-tmux/
+    +title in vim ($TERM=tmux-256color works, screen-256color doesn't)
+        .vimrc: if tmux: set title
+    +title over ssh (.bashrc)
+        .bashrc: check for tmux* or screen* in $TERM
+    +prompt over ssh (.bashrc)
+        .bashrc: check for *-256color in $TERM
+    +ctrl-left/right in vim (xterm-keys)
+        .vimrc: if tmux: set term=xterm-256color
+    ~mouse niceties
+        +e.g. drag windows around in status bar, click to create new window,
+        maybe modifier+click to drag panes around?
+        Examples: https://github.com/sc0ty/config/blob/master/.tmux.conf
+        graceful degradation
+
+    bug to investigate:
+        vim running in one of my tmux sessions lost the ability to see the
+        * and + registers for copy/paste. Couldn't figure out how to restore
+        this, launching a new shell within the session and launching vim
+        from scratch made them come back. Closing and opening vim in one of
+        the existing shells wouldn't work. Disconnecting and reconnecting the
+        tmux session didn't work. I think I had connected to this tmux session
+        via ssh from my phone, so that may have broken some connection to the
+        clipboard.
+        Possibly similar to OS X "reattach-to-user-namespace" hack?
+        https://coderwall.com/p/j9wnfw/vim-tmux-system-clipboard
+
+vim:
+    handle tmux TERM on systems with old vim
+        ~install tmux terminfo
+    +nowrap
+    ~colors
+        +termguicolors for true color
+        if tmux: set background=dark
+        ?if tmux: set t_Co=256
+        +custom colorschemes?
+            just use base16 (base16-seti)
+            make almost-seti colorscheme for 256 color terminals
+            molokai doesn't color the tab bar
+    +line numbers
+        number
+        relativenumber
+        cursorline
+    ~window, tab navigation
+        sort of works by default?
+    ?better indenting
+    convenient side-scrolling keys
+    autoread (or better handling/warning of external edits)
+        https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim
+    show useful non-printable characters
+        list
+        listchars
+            tab:>-
+            eol:$
+            trail:.
+            leading?
+    separate directory for backup, swap, and undo file(s)
+        backup, backupdir, backupskip, writebackup
+        swapfile, directory, :help swap-file
+        undodir
+    ctags
+    use same/similar code-completion shortcuts for spelling suggestions?
+    plugins?:
+        nerdtree
+            or vinegar?
+        repeat.vim (tim pope)
+        surround(!)
+        commentary(!)
+        syntastic
+        vim-fugitive (git)
+        ultisnips
+        vim-snippets
+        vis.vim (command mode ops on visual region :B)
+        dragvisuals.vim (drag blocks in any direction + duplicate)(!)
+            (Damian Conway)
+        replace with register
+        titlecase
+        sort-motion
+        system-copy
+        textobj-user wiki:
+            indent: indented regions as text objects
+            entire: target whole document
+            line: entire line minus surrounding whitespace as text object
+            ruby block: eh.. python?
+            vim-textobj-comment?
+    plugin manager?
+        vundle
+        pathogen
+        native packages / packadd (> vim 8)
+        vim-plug
+
+dotfiles:
+    +.tmux.conf
+        ~break up by version with supported features
+        automatically select the correct config file based on version
+        +add tmux terminfo
+    .bashrc
+        at least include an example template that includes $TERM fixes
+    +.vimrc
+        keep defaults/example settings separate
+        organize by feature?
+    .profile (?)
+        set up $HOME/.local to behave like /usr/local
+    .links2 (?)
+    .elinks (?) (like links2, color, mousewheel scrolling)
+    basic xfce config? (maybe with separate install process)
+    debian font hinting config hack thing (.fonts?)
+    install script
+    symlink vim packages into .vim, store copies or submodules in git
+
