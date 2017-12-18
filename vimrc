@@ -121,6 +121,7 @@ set spell
 " Pretend to be xterm when using tmux
 if &term =~ '^tmux' || &term =~ '^screen'
   set title
+  set ttymouse=sgr
   if &term =~ '256color'
     set term=xterm-256color
   else
