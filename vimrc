@@ -142,6 +142,9 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+" Workaround for https://github.com/vim/vim/issues/3480
+set t_Cs=
+
 " Color scheme
 set background=dark
 try
