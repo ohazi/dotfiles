@@ -67,10 +67,26 @@ endif
 " Search recursively
 set path+=**
 
-" Try to avoid leaving backup files all over the place
-set backupdir=~/tmp,.,~/
-set backup
+" Swap / backup / undo niceties from:
+" https://begriffs.com/posts/2019-07-19-history-use-vim.html
+set swapfile
+set directory^=~/.vim/swap//
+
+" Protect against crash-during-write
+set writebackup
+" but do not persist backup after successful write
+set nobackup
+" use rename-and-write-new method whenever safe
+set backupcopy=auto
+" patch required to honor double slash at end
+if has("patch-8.1.0251")
+    " consolidate the writebackups -- not a big
+    " deal wither way, since they usually get deleted
+    set backupdir^=~/.vim/backup//
+end
+" persist the undo tree for each file
 set undofile
+set undodir^=~/.vim/undo//
 
 " It's tempting to do something similar with swap files, but they're less
 " annoying, and I don't really want to worry about filename collisions.
