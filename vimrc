@@ -182,36 +182,26 @@ catch /^Vim\%((\a\+)\)\=:E185/
   set background=dark
 endtry
 
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
 
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-    imap <C-space> <Plug>(asyncomplete_force_refresh)
-    if !has("gui_running")
-        imap <C-@> <C-space>
-    endif
-    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-    "let g:asyncomplete_auto_popup = 0
+" NERDTree Config
 
-    function! s:check_back_space() abort
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1] =~ '\s'
-    endfunction
+map <C-n> :NERDTreeToggle<CR>
 
-    inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ asyncomplete#force_refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-endif
+
+
+
+" ALE Config
+
+" Enable completion where available.
+" " This setting must be set before ALE is loaded.
+" "
+" " You should not turn this setting on if you wish to use ALE as a completion
+" " source for other completion plugins, like Deoplete.
+let g:ale_completion_enabled = 1
+
+let g:ale_linters = {'rust': ['rls']}
 
 
 
@@ -313,3 +303,13 @@ if has('syntax') && has('eval')
     packadd! matchit
   endif
 endif
+
+
+" Put these lines at the very end of your vimrc file.
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
