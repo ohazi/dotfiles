@@ -182,6 +182,37 @@ catch /^Vim\%((\a\+)\)\=:E185/
   set background=dark
 endtry
 
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+    imap <C-space> <Plug>(asyncomplete_force_refresh)
+    if !has("gui_running")
+        imap <C-@> <C-space>
+    endif
+    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+    "let g:asyncomplete_auto_popup = 0
+
+    function! s:check_back_space() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1] =~ '\s'
+    endfunction
+
+    inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ asyncomplete#force_refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+endif
+
 
 
 
