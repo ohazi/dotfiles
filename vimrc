@@ -305,6 +305,9 @@ if has('syntax') && has('eval')
 endif
 
 
+au! BufNewFile,BufRead *.svelte set ft=html
+
+
 " Put these lines at the very end of your vimrc file.
 
 " Load all plugins now.
