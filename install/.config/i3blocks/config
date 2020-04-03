@@ -1,0 +1,35 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=40
+
+[xtitle]
+command=xtitle -s | awk '{ print $0; fflush() }'
+interval=persist
+
+[volume]
+full_text=volume
+command=volume.sh
+markup=pango
+interval=2
+signal=1
+
+[battery]
+full_text=battery
+command=battery.sh
+markup=pango
+interval=2
+
+[clock]
+full_text=clock
+#command=date '+%a, %b %d %-I:%M:%S %p'
+command=clock.sh
+markup=pango
+interval=1

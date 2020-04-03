@@ -134,11 +134,11 @@ set spell
 "  execute "set <xLeft>=\e[1;*D"
 "endif
 
-" Pretend to be xterm when using tmux
-if &term =~ '^tmux' || &term =~ '^screen'
+" Pretend to be xterm when using tmux or alacritty
+if &term =~ '^tmux\|^screen\|^alacritty'
   set title
   set ttymouse=sgr
-  if &term =~ '256color'
+  if &term =~ '256color\|^alacritty'
     set term=xterm-256color
   else
     set term=xterm
@@ -168,7 +168,9 @@ try
   " default palette. One of these days I might try to make an almost-seti
   " colorscheme that can work with the default 256-color palette.
   "let base16colorspace=256 " Shouldn't need this; not using base16-shell.
-  colorscheme base16-seti
+  "colorscheme base16-seti
+
+  colorscheme gruvbox
 
   " Original colors are slightly too warm for my taste.
   "let g:molokai_original=1
@@ -181,6 +183,21 @@ catch /^Vim\%((\a\+)\)\=:E185/
   " The default colorscheme resets background to light
   set background=dark
 endtry
+
+
+
+
+if &term =~ '^xterm\|^tmux\|^alacritty'
+  let &t_SI = "\<Esc>[6 q" "SI = INSERT mode
+  let &t_SR = "\<Esc>[4 q" "SR = REPLACE mode
+  let &t_EI = "\<Esc>[2 q" "EI = NORMAL mode
+  " 1 or 0 -> blinking block
+  " 2 -> solid block
+  " 3 -> blinking underscore
+  " 4 -> solid underscore
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
 
 
 

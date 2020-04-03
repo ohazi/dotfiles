@@ -1,0 +1,44 @@
+$include /etc/inputrc
+
+set editing-mode emacs
+#set editing-mode vi
+
+$if mode=vi
+    set show-mode-in-prompt on
+    $if term=linux
+        set vi-ins-mode-string \1\e[?0c\2
+        set vi-cmd-mode-string \1\e[?8c\2
+    $else
+        set vi-ins-mode-string \1\e[6 q\2
+        set vi-cmd-mode-string \1\e[2 q\2
+    $endif
+
+    set keymap vi-command
+    Control-a: beginning-of-line
+    Control-e: end-of-line
+
+    set keymap vi-insert
+    Control-a: beginning-of-line
+    Control-e: end-of-line
+
+$endif
+
+# This is supposed to bind ctrl-left and ctrl-right. Some terminals do this
+# automatically (xterm, xfce4-terminal, alacritty) while others don't (urxvt).
+# This doesn't appear to work for urxvt, which wants its settings defined in
+# .Xresources anyway.
+#"\e[1;5D": backward-word
+#"\e[1;5C": forward-word
+
+#set bell-style visible
+
+# colored tab completion
+set colored-stats on
+set visible-stats on
+set mark-symlinked-directories on
+set colored-completion-prefix on
+
+#set show-all-if-ambiguous on
+#set show-all-if-unmodified on
+
+set skip-completed-text on
