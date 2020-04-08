@@ -170,6 +170,8 @@ try
   "let base16colorspace=256 " Shouldn't need this; not using base16-shell.
   "colorscheme base16-seti
 
+  let g:gruvbox_number_column = 'bg1'
+  let g:gruvbox_vert_split = 'bg1'
   colorscheme gruvbox
 
   " Original colors are slightly too warm for my taste.

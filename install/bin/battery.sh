@@ -122,8 +122,10 @@ power_now_watts="$(echo "scale=2; $power_now_sum / 1000000" | bc) W"
 
 # Compute totals and times...
 charge_level_total=$(echo "scale=0; 100 * $energy_now_sum / $energy_full_sum" | bc)
-time_until_empty=$(echo "3600 * $energy_now_sum / $power_now_sum" | bc | awk '{ print "@"$1 }' | xargs date -u +%-H:%M -d)
-time_until_full=$(echo "3600 * ($energy_full_sum - $energy_now_sum) / $power_now_sum" | bc | awk '{ print "@"$1 }' | xargs date -u +%-H:%M -d)
+if [ "$power_now_sum" -ne 0 ]; then
+    time_until_empty=$(echo "3600 * $energy_now_sum / $power_now_sum" | bc | awk '{ print "@"$1 }' | xargs date -u +%-H:%M -d)
+    time_until_full=$(echo "3600 * ($energy_full_sum - $energy_now_sum) / $power_now_sum" | bc | awk '{ print "@"$1 }' | xargs date -u +%-H:%M -d)
+fi
 
 
 totals_fmt=""
@@ -142,12 +144,19 @@ case $plugged_in in
             totals_fmt+="$bat_lg_4"
         fi
 
-        totals_fmt+=" <span font_features=\"tnum\">$charge_level_total% ($time_until_empty)</span>"
-        totals_fmt+=""
+        totals_fmt+=" <span font_features=\"tnum\">$charge_level_total%"
+        if [ -n "$time_until_empty" ]; then
+            totals_fmt+=" ($time_until_empty)"
+        fi
+        totals_fmt+="</span>"
         ;;
     1)
         totals_fmt+="$plug"
-        totals_fmt+=" <span font_features=\"tnum\">$charge_level_total% ($time_until_full)</span>"
+        totals_fmt+=" <span font_features=\"tnum\">$charge_level_total%"
+        if [ -n "$time_until_full" ]; then
+            totals_fmt+=" ($time_until_full)"
+        fi
+        totals_fmt+="</span>"
         ;;
     *)
         totals_fmt+="?"
