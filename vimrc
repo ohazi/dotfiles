@@ -108,6 +108,7 @@ set clipboard^=unnamed,unnamedplus
 
 " Line wrapping
 set nowrap
+set textwidth=0 wrapmargin=0
 
 " Line numbering
 set number
