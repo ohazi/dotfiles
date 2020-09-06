@@ -37,8 +37,13 @@ exec_always --no-startup-id nm-applet
 # Bluetooth manager
 exec_always --no-startup-id blueman-tray
 
+# Display mode
+exec_always --no-startup-id set_display_mode.sh
+
 # Background
-exec_always --no-startup-id ~/.fehbg
+# set_display_mode.sh takes care of this, and running it twice appears to race
+# (probably Xlib).
+#exec_always --no-startup-id ~/.fehbg
 
 # Compositor
 exec --no-startup-id picom -b

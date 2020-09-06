@@ -19,6 +19,7 @@ bin/
 .nvidia-xinitrc
 Pictures/
 .profile
+.screenlayout/
 .tmux.conf
 .vim/
 .vimrc
