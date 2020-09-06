@@ -1,0 +1,12 @@
+[submodule ".vim/pack/dotfiles/start/rust.vim"]
+	path = .vim/pack/dotfiles/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".vim/pack/dotfiles/start/nerdtree"]
+	path = .vim/pack/dotfiles/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/pack/dotfiles/start/gruvbox"]
+	path = .vim/pack/dotfiles/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule ".vim/pack/dotfiles/start/ale"]
+	path = .vim/pack/dotfiles/start/ale
+	url = https://github.com/dense-analysis/ale.git
