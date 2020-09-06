@@ -1,0 +1,2 @@
+#xrandr --auto
+exec startxfce4

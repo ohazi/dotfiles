@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ "$#" -ne 1 ]; then
+    COUNT=1
+else
+    COUNT=$1
+fi
+
+work() {
+    while :
+    do
+        dd if=/dev/urandom bs=8 count=8 status=none | sha256sum > /dev/null
+    done
+}
+
+for _ in $(seq 1 "$COUNT"); do
+    work &
+done
+
+trap 'kill 0' EXIT
+
+while :
+do
+    sleep 1
+done
+

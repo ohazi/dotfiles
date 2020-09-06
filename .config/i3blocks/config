@@ -1,0 +1,54 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=40
+
+# I don't remember why I pipe to awk here... could be related to this:
+# https://github.com/vivien/i3blocks/issues/366
+[xtitle]
+command=xtitle -s | awk '{ print $0; fflush() }'
+interval=persist
+
+# TODO:
+# _ variable-width spaces breaks numerical display
+# _ make printf work with escaped utf-8 codepoints
+# _ replace with bar graph
+# _ toggle floating htop window when clicked
+[cpu]
+full_text=cpu
+command=~/source/i3blocks-contrib/cpu_usage2/cpu_usage2 -t 2 -d 1 -l "<span font_family='Font Awesome 5 Free Solid'></span>"
+markup=pango
+interval=persist
+
+[volume]
+full_text=volume
+command=volume.sh
+markup=pango
+interval=2
+signal=1
+
+[battery]
+full_text=battery
+command=battery.sh
+markup=pango
+interval=2
+
+[clock]
+full_text=clock
+#command=date '+%a, %b %d %-I:%M:%S %p'
+command=clock.sh
+markup=pango
+interval=1
+
+#[calendar]
+##full_text="<span font_family=\"Material Design Icons\">\ufdfa</span>"
+#full_text="<span font_family=\"Font Awesome 5 Free Solid\">\uf073</span>"
+#markup=pango
+#command=orage -t

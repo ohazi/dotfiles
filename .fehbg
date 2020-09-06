@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-scale '/home/ohazi/Pictures/wallpaper/wallhaven-73w7o9-2160p.jpg' 

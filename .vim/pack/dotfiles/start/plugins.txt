@@ -1,0 +1,4 @@
+https://github.com/dense-analysis/ale.git
+https://github.com/morhetz/gruvbox.git
+https://github.com/scrooloose/nerdtree.git
+https://github.com/rust-lang/rust.vim.git

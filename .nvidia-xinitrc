@@ -1,0 +1,7 @@
+if [ $# -gt 0 ]; then
+  $*
+else
+  [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+  #openbox-session
+  exec i3
+fi

@@ -1,0 +1,3 @@
+rofi.theme: theme.rasi
+rofi.sidebar-mode: true
+rofi.show-icons: true
