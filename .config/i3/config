@@ -38,7 +38,9 @@ exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-tray
 
 # Display mode
-exec_always --no-startup-id set_display_mode.sh
+# Set initial display mode, then allow manual refresh.
+exec --no-startup-id set_display_mode.sh
+bindsym $mod+BackSpace exec --no-startup-id set_display_mode.sh
 
 # Background
 # set_display_mode.sh takes care of this, and running it twice appears to race
@@ -298,7 +300,7 @@ set $urgent_i       #F1914B
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    output primary
+    #output primary
     position top
 
     tray_output primary
@@ -346,32 +348,6 @@ bar {
     #    binding_mode       #2f343a #900000 #ffffff
     #}
 }
-
-#bar {
-#    output HDMI2
-#    position top
-#    status_command i3blocks
-#
-#    font pango:Cantarell, Font Awesome 5 Free, Material Design Icons Regular 11
-#    strip_workspace_numbers yes
-#
-#    colors {
-#        background  $bar_bg
-#        statusline  $text_fg
-#        separator   $bar_sep
-#
-#        # class             border          background      text
-#        focused_workspace   $ws_focused_b   $ws_focused     $text_fg
-#
-#        # TODO: active_workspace is the visible workspace on a second
-#        # display when the display is not focused.
-#        active_workspace    #333333         #5f676a         #ffffff
-#
-#        inactive_workspace  $ws_inactive_b  $ws_inactive    $text_bg
-#        urgent_workspace    $ws_urgent_b    $ws_urgent      $text_fg
-#        binding_mode        $ws_urgent_b    $ws_urgent      $text_fg
-#    }
-#}
 
 # border = color of thin (1px?) border around titlebar box
 # background = background color of titlebar box
