@@ -30,6 +30,9 @@ font pango:Cantarell Regular 11
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 706090 -f --nofork
 bindsym $mod+Shift+l exec --no-startup-id loginctl lock-session
 
+# Set keyboard repeat rate to something reasonable
+exec_always --no-startup-id xset r rate 500 40
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec_always --no-startup-id nm-applet
@@ -48,7 +51,7 @@ bindsym $mod+BackSpace exec --no-startup-id set_display_mode.sh
 #exec_always --no-startup-id ~/.fehbg
 
 # Compositor
-exec --no-startup-id picom -b
+exec --no-startup-id picom --experimental-backends -b
 
 # Calendar
 exec_always --no-startup-id pgrep -x orage || orage
