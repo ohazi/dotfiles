@@ -17,7 +17,7 @@ bin/
 .inputrc
 .local/share/dbus-1/
 .nvidia-xinitrc
-Pictures/
+Pictures/wallpaper/
 .profile
 .screenlayout/
 .tmux.conf
