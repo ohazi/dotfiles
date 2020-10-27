@@ -8,6 +8,7 @@ bin/
 #.config/i3/
 #.config/i3blocks/
 #.config/picom/
+.config/pulse/default.pa
 .config/rofi/
 #.config/systemd/
 #.fehbg
