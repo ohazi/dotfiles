@@ -25,3 +25,4 @@ Pictures/wallpaper/
 .vimrc
 .xinitrc
 .Xresources
+#.xsessionrc
