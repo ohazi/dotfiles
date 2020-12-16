@@ -33,7 +33,7 @@ case $is_muted in
         ;;
 esac
 
-printf " %s" "<span font_features=\"tnum\">$volume</span>"
+printf " %s" "<span font_features=\"tnum\">$volume%</span>"
 
 #if [ "$sink_volume_left_abs" != "$sink_volume_right_abs" ] ; then
 #    printf "!"
