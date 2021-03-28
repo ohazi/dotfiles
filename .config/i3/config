@@ -51,10 +51,13 @@ bindsym $mod+BackSpace exec --no-startup-id set_display_mode.sh
 #exec_always --no-startup-id ~/.fehbg
 
 # Compositor
-exec --no-startup-id picom --experimental-backends -b
+exec --no-startup-id picom -b
 
 # Calendar
 exec_always --no-startup-id pgrep -x orage || orage
+
+# ibus
+exec_always --no-startup-id ibus-daemon -drx
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3blocks_volume pkill -SIGRTMIN+1 i3blocks
@@ -98,7 +101,7 @@ bindsym $mod+d exec "rofi -combi-modi run,drun -show combi -modi combi,run,drun 
 
 bindsym $mod+c exec "CM_LAUNCHER=rofi clipmenu"
 
-bindsym $mod+j exec "rofimoji -c"
+bindsym $mod+j exec "rofimoji --action copy"
 
 bindsym $mod+p exec "rofipass"
 
