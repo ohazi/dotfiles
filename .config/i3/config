@@ -103,7 +103,8 @@ bindsym $mod+c exec "CM_LAUNCHER=rofi clipmenu"
 
 bindsym $mod+j exec "rofimoji --action copy"
 
-bindsym $mod+p exec "rofipass"
+bindsym $mod+p exec "rofipass --type"
+bindsym $mod+Shift+p exec "rofipass"
 
 # change focus
 #bindsym $mod+j focus left
