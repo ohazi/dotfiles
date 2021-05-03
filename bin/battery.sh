@@ -50,10 +50,16 @@ for battery in "${path_batteries[@]}" ; do
     bat_energy_now=$(cat "$battery"/energy_now)
     bat_energy_full=$(cat "$battery"/energy_full)
     bat_charge_level=$(cat "$battery"/capacity)
+    bat_voltage_now=$(cat "$battery"/voltage_now)
+    bat_voltage_min=$(cat "$battery"/voltage_min_design)
     # For more precision
     #bat_charge_level=$(echo "scale=1; 100 * $bat_energy_now / $bat_energy_full" | bc)
 
     fmt=""
+
+    if [ "$bat_voltage_now" -le "$bat_voltage_min" ] ; then
+        fmt+="!"
+    fi
 
     if [ "$bat_charge_level" -le 6 ] ; then
         fmt+="$bat_sm_0"
