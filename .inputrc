@@ -38,6 +38,17 @@ set visible-stats on
 set mark-symlinked-directories on
 set colored-completion-prefix on
 
+# https://codeinthehole.com/tips/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
+
+# TODO: maybe change these to ctrl+up / ctrl+down instead?
+#"\e[A": history-search-backward
+#"\e[B": history-search-forward
+
+# These don't seem necessary?
+#"\e[C": forward-char
+#"\e[D": backward-char
+
+
 #set show-all-if-ambiguous on
 #set show-all-if-unmodified on
 
