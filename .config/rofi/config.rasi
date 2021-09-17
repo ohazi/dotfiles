@@ -1,0 +1,18 @@
+configuration {
+
+}
+
+//@theme "/usr/share/rofi/themes/Adapta-Nokto.rasi"
+@theme "theme.rasi"
+
+window {
+
+}
+
+element {
+    children: [element-icon, element-text];
+}
+
+mainbox {
+    children: [inputbar, listview, mode-switcher];
+}
