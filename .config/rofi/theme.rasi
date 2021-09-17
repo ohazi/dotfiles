@@ -65,6 +65,10 @@ element {
     border:  0;
     padding: 3;
 }
+element-icon {
+    vertical-align: 0.5;
+    size: 1 em;
+}
 element-text {
     background-color: @background-color;
     text-color:       inherit;
