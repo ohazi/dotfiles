@@ -112,8 +112,9 @@ element.alternate.active {
 scrollbar {
     width:        4px ;
     border:       0;
-    handle-width: 8px ;
+    handle-width: 16px ;
     padding:      0;
+    handle-color: @selected-normal-background;
 }
 mode-switcher {
     border:       2px dash 0px 0px ;
