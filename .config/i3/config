@@ -74,7 +74,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && $notify_b
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && $notify_backlight
 
 # Print screen key
-bindsym Print exec xfce4-screenshooter
+bindsym Print exec pgrep -x "xfce4-screensho" || xfce4-screenshooter
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

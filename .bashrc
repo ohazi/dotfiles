@@ -112,4 +112,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Command not found completion for Arch, requires `pkgfile`, kinda slow...
+if [ -f /usr/share/doc/pkgfile/command-not-found.bash ]; then
+    . /usr/share/doc/pkgfile/command-not-found.bash
+fi
+
 . "$HOME/.cargo/env"
