@@ -82,6 +82,7 @@ vim:
     ctags
     use same/similar code-completion shortcuts for spelling suggestions?
     plugins?:
+        vista.vim (ctags browser thing - view and search LSP symbols)
         nerdtree
             or vinegar?
         repeat.vim (tim pope)
@@ -107,7 +108,7 @@ vim:
     plugin manager?
         vundle
         pathogen
-        native packages / packadd (> vim 8)
+        +native packages / packadd (> vim 8)
         vim-plug
 
 dotfiles:
