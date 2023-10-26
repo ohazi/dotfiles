@@ -118,3 +118,5 @@ if [ -f /usr/share/doc/pkgfile/command-not-found.bash ]; then
 fi
 
 . "$HOME/.cargo/env"
+
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
