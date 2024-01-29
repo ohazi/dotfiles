@@ -9,14 +9,18 @@ bin/
 .config/i3blocks/
 .config/picom/
 #.config/pulse/default.pa
+.config/redshift/
 .config/rofi/
 .config/systemd/
+.config/zellij/
+#etc/apparmor.d/local/usr.bin.redshift #(copy to /etc, do not symlink)
 .fehbg
 .gitconfig
 .gtkrc-2.0
 .icons/
 .inputrc
 .local/share/dbus-1/
+#.mozilla/
 .nvidia-xinitrc
 Pictures/wallpaper/
 .profile
