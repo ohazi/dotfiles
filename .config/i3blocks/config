@@ -12,8 +12,10 @@ separator_block_width=40
 
 # I don't remember why I pipe to awk here... could be related to this:
 # https://github.com/vivien/i3blocks/issues/366
+# Edit: xtitle -s sometimes writes out the title twice, and this seems to
+# confuse i3blocks. I think I was trying to buffer by line here
 [xtitle]
-command=xtitle -s | awk '{ print $0; fflush() }'
+command=xtitle -s # | awk '{ print $0; fflush(); }'
 interval=persist
 
 # TODO:
